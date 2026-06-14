@@ -39,7 +39,7 @@ export const profile = {
   // Honest, countable signals pulled directly from the CV.
   headline: "I build fast, scalable products across the full stack — from AI and Web3 to pixel-perfect interfaces.",
   subheadline:
-    "Full Stack Engineer with 7+ years shipping production web applications and backend systems for remote teams across the US and Europe. I turn product requirements into clean, maintainable systems that perform.",
+    "Full Stack Engineer with 8+ years shipping production web applications and backend systems for remote teams across the US and Europe. I turn product requirements into clean, maintainable systems that perform.",
   socials: {
     email: "mailto:williamho0827@gmail.com",
     github: "https://github.com/williamhopro",
