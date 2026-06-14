@@ -137,7 +137,7 @@ export const skillCategories: SkillCategory[] = [
     name: "AI / ML",
     icon: BrainCircuit,
     description: "LLM-powered features and language understanding.",
-    skills: ["LLM", "RAG", "NLP", "GPT-4", "GPT-3.5", "Python"],
+    skills: ["LLM", "RAG", "AI-agent", "GPT-4", "GPT-4.5", "Python"],
   },
   {
     name: "Web3 / Blockchain",
@@ -360,7 +360,7 @@ export const highlights: Highlight[] = [
     icon: BrainCircuit,
     title: "AI & Web3 Fluency",
     description:
-      "Hands-on with LLM, RAG, and NLP, plus blockchain dApp functionality — bridging emerging tech with practical product delivery.",
+      "Hands-on with LLM, RAG, and AI-agent, plus blockchain dApp functionality — bridging emerging tech with practical product delivery.",
   },
   {
     icon: ShieldCheck,
@@ -407,8 +407,8 @@ export const services: Service[] = [
     icon: BrainCircuit,
     title: "AI-Powered Features",
     description:
-      "Integrate LLM, RAG, and NLP capabilities into your product to add intelligent, language-driven experiences.",
-    deliverables: ["LLM integration", "RAG pipelines", "GPT-4 / GPT-3.5 features"],
+      "Integrate LLM, RAG, and AI-agent capabilities into your product to add intelligent, language-driven experiences.",
+    deliverables: ["LLM integration", "RAG pipelines", "GPT-4 / GPT-4.5 features"],
   },
   {
     icon: Wallet,

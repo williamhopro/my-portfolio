@@ -2,7 +2,18 @@ import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 
 import { profile } from "@/lib/data";
+import { HydrationBeacon } from "@/components/motion/hydration-beacon";
 import "./globals.css";
+
+/**
+ * Pure-CSS failsafe so the page is never left blank. Framer-motion renders
+ * hidden content as inline `opacity:0`; if the app never hydrates (JS blocked,
+ * bundle failed, slow/stale tab) this animation reveals it after a short delay.
+ * Needs no JavaScript, so it survives a fully blocked bundle. On a healthy load
+ * the HydrationBeacon adds `hydrated` within ~1s, which cancels the animation
+ * before it fires — leaving framer-motion's own animations untouched.
+ */
+const failsafeReveal = `@keyframes fm-failsafe{to{opacity:1;transform:none}}[style*="opacity"]{animation:fm-failsafe .01s linear 3.5s forwards}.hydrated [style*="opacity"]{animation:none}`;
 
 const inter = Inter({
   subsets: ["latin"],
@@ -113,9 +124,22 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        {/* Inlined so the failsafe works even if the external CSS/JS never loads. */}
+        <style dangerouslySetInnerHTML={{ __html: failsafeReveal }} />
+        <noscript>
+          {/* JS disabled: reveal all animation-hidden content immediately. */}
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `[style*="opacity"]{opacity:1!important;transform:none!important;}`,
+            }}
+          />
+        </noscript>
+      </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
+        <HydrationBeacon />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
